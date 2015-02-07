@@ -3,12 +3,11 @@ package vieux.foo.tap_cercle;
 public class User {
 	
 	char sexe;
-	int age, freq;
+	int age;
 	
-	public User(char sexe, int age, int freq) {
+	public User(char sexe, int age) {
 		this.sexe = sexe;
 		this.age = age;
-		this.freq = freq;
 	}
 
 	public char getSexe() {
@@ -25,14 +24,6 @@ public class User {
 
 	public void setAge(int age) {
 		this.age = age;
-	}
-
-	public int getFreq() {
-		return freq;
-	}
-
-	public void setFreq(int freq) {
-		this.freq = freq;
 	}
 }
 

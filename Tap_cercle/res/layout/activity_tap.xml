@@ -33,6 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewNb"
         android:layout_marginTop="29dp"
-        android:src="@drawable/cercle" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/cercle"
+        style="?android:attr/borderlessButtonStyle" />
 
 </RelativeLayout>

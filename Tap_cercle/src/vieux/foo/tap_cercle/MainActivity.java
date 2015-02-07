@@ -23,7 +23,6 @@ public class MainActivity extends Activity {
         buttonEntrainement = (Button)findViewById(R.id.buttonStartAM);
         buttonTap = (Button)findViewById(R.id.buttonTapAM);
         buttonStats = (Button)findViewById(R.id.buttonStatsAM);
-        buttonOptions = (Button)findViewById(R.id.buttonOptionsAM);
         
         Operations op = new Operations(this);
         op.ouvrirBD();
@@ -45,7 +44,6 @@ public class MainActivity extends Activity {
         buttonEntrainement.setOnClickListener(ec);
         buttonTap.setOnClickListener(ec);
         buttonStats.setOnClickListener(ec);
-        buttonOptions.setOnClickListener(ec);
     }
     
     private class Ecouteur implements OnClickListener
@@ -73,14 +71,6 @@ public class MainActivity extends Activity {
 			{
 				//buttonStats
 				i = new Intent(MainActivity.this, StatsActivity.class);	
-			}else if(v.getId() == R.id.buttonOptionsAM){
-				//i = new Intent(MainActivity.this, StatsActivity.class);	
-			}
-			else
-			{
-				//buttonOptions
-				i = new Intent(MainActivity.this, MainActivity.class);	
-				
 			}
 			startActivity(i);
     	}

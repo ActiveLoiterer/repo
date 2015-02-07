@@ -29,9 +29,9 @@ public class Operations {
 		database.close();
 	}
 	
-	public void ajouterResultat(int freq1,int freq2,int freq3, int pourcentage2,int pourcentage3,int tempssec, Date date)
+	public void ajouterResultat(int freq1,int freq2, int pourcentage2,int pourcentage3,int tempssec, Date date)
 	{
-		databaseHelper.ajouterResultat(new Resultat(freq1,freq2,freq3, pourcentage2, pourcentage3, tempssec, date), database);
+		databaseHelper.ajouterResultat(new Resultat(freq1,freq2,pourcentage2, pourcentage3, tempssec, date), database);
 	}
 	
 	public void ajouterUser(int age, char sexe)
@@ -40,7 +40,7 @@ public class Operations {
 	}
 	
 	public int getMostRecentFreq(){
-		Cursor c = database.rawQuery("SELECT frequence3 date FROM resultat ORDER BY _id DESC", null);
+		Cursor c = database.rawQuery("SELECT frequence2 date FROM resultat ORDER BY _id DESC", null);
 		
 		c.moveToFirst();
 		int i = c.getInt(0);
@@ -52,12 +52,12 @@ public class Operations {
 		Vector <Vector<Integer>> v = new Vector<Vector<Integer>>();
 		Vector <Integer> freqs = null;
 		
-		Cursor c = database.rawQuery("SELECT frequence1, frequence2,frequence3 FROM resultat", null);
+		Cursor c = database.rawQuery("SELECT frequence1, frequence2 FROM resultat", null);
 
 			while(c.moveToNext())
 			{
 				freqs = new Vector<Integer>();
-				for(int i = 0; i < 3; i++){					
+				for(int i = 0; i < 2; i++){					
 					freqs.add(c.getInt(i));
 				}
 				v.add(freqs);
@@ -123,7 +123,6 @@ public class Operations {
 		ContentValues cv = new ContentValues();
 		cv.put("frequence1", fr1);
 		cv.put("frequence2", 0);
-		cv.put("frequence3", 0);
 		cv.put("pourcentage2", 0);
 		cv.put("pourcentage3", 0);
 		cv.put("date", "");
@@ -138,14 +137,7 @@ public class Operations {
 		Log.i("last_id", ""+index);
 		database.update("resultat", cv, "_id = ?",new String[]{String.valueOf(index)});		
 	}
-	public void saveFr3(int fr3){
-		ContentValues cv = new ContentValues();
-		cv.put("frequence3", fr3);
-		Cursor c = database.rawQuery("SELECT MAX(_id) FROM resultat",null);
-		c.moveToFirst();
-		int index = c.getInt(0);
-		database.update("resultat", cv, "_id = ?",new String[]{String.valueOf(index)});
-	}
+	
 	public void saveTemps(int tempssec){
 		ContentValues cv = new ContentValues();
 		cv.put("tempssec", tempssec);

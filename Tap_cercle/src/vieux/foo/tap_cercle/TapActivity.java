@@ -115,7 +115,7 @@ public class TapActivity extends Activity {
 				{
 					long varTemps = SystemClock.elapsedRealtime();
 					long tempsaRest = 60000;
-					Log.i("test","lol21");
+					//Log.i("test","lol21");
 					
 					retour.setEnabled(true);
 					

@@ -40,26 +40,27 @@ public class StatsActivity extends Activity {
 
 		o.ouvrirBD();
 		
-		/*o.ajouterUser(21, 'M');
+		o.ajouterUser(21, 'M');
 		
-		o.ajouterResultat(250,150,200,50,50, new Date());
+		o.ajouterResultat(150,180,50,50,0,new Date());
 		
-		o.ajouterResultat(350,250,300,50,50, new Date());*/
+		o.ajouterResultat(130,190,50,50,0,new Date());
 		
 		try{
-			freqs = o.getFreqs();		
+			freqs = o.getFreqs();
 			
 			for(Vector<Integer> v: freqs){
-				Log.i("INFO", v + "");
 				moyennes.add(Stats.moyParEntr(v));
 			}
 			
 			idEntraine = o.getEntrainements();	
+			
+			
 		}
 		catch(Exception e)
 		{
 			Log.i("INFO", "PAS DE DONNÉES !1");
-		}				
+		}	
 		
 		o.fermerBD();
 		

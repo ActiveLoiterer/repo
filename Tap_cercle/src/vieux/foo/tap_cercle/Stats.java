@@ -53,6 +53,6 @@ public class Stats {
 	}
 	
 	public static int pourcentage (int pulsations, int age, char sexe){
-		return (pulsations * temps * 100 )/ freqMax(age, sexe);
+		return (pulsations * 100)/ freqMax(age, sexe);
 	}
 }

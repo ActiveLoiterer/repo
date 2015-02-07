@@ -6,11 +6,10 @@ public class Resultat {
 	int frequence1,frequence2,frequence3, pourcentage2,pourcentage3, tempssec;
 	Date date;
 	
-	public Resultat(int frequence1,int frequence2,int frequence3, int pourcentage2,int pourcentage3, int tempssec, Date date)
+	public Resultat(int frequence1,int frequence2,int pourcentage2,int pourcentage3, int tempssec, Date date)
 	{
 		this.frequence1 = frequence1;
 		this.frequence2 = frequence2;
-		this.frequence3 = frequence3;
 		this.pourcentage2 = pourcentage2;
 		this.pourcentage3 = pourcentage3;
 		this.tempssec = tempssec;
@@ -33,10 +32,6 @@ public class Resultat {
 	}
 	public int getFrequence3() {
 		return frequence3;
-	}
-
-	public void setFrequence3(int frequence3) {
-		this.frequence3 = frequence3;
 	}
 
 	public int getPourcentage2() {

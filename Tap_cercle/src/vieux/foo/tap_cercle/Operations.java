@@ -46,10 +46,14 @@ public class Operations {
 		Vector <Integer> freqs = new Vector<Integer>();
 		
 		Cursor c = database.rawQuery("SELECT frequence, date FROM resultat ORDER BY date ASC", null);
-		
-		while(c.moveToNext())
+		try{
+			while(c.moveToNext())
+			{
+				freqs.add(c.getInt(0));
+			}
+		}catch(Exception e)
 		{
-			freqs.add(c.getInt(0));
+			Log.i("test", "lol");
 		}
 		
 		return freqs;
@@ -90,6 +94,23 @@ public class Operations {
 		sexe = c.getString(0).toCharArray()[0];
 		
 		return sexe;
+	}
+	
+	public boolean aUser(){
+		Cursor c = database.rawQuery("SELECT * FROM user", null);
+		
+		try{
+			Log.i("test", String.valueOf(c.getCount()));
+		}
+		catch(Exception e){
+			return false;
+		}
+		
+		if(c.getCount() > 0)
+			return true;
+		else
+			return false;
+		
 	}
 }
 

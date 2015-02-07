@@ -8,6 +8,7 @@
     <string name="title_activity_fin_timer_dialog">FinTimerDialog</string>
     <string name="title_activity_tap">TapActivity</string>
     <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_debut_app_dialog">DebutAppDialog</string>
     <string name="title_activity_stats">StatsActivity</string>
 
 </resources>

@@ -17,10 +17,6 @@ public class Stats {
 			return 226 - age;
 		}		
 	}
-		
-	public static int pourcentage (int pulsations, int age, char sexe){
-		return (pulsations * temps * 100 )/ freqMax(age, sexe);
-	}
 	
 	public static int moyenne(Vector<Integer> freqs){
 		int moy = 0;
@@ -32,5 +28,9 @@ public class Stats {
 		moy /= freqs.size();
 		
 		return moy;
+	}
+		
+	public static int pourcentage (int pulsations, int age, char sexe){
+		return (pulsations * temps * 100 )/ freqMax(age, sexe);
 	}
 }

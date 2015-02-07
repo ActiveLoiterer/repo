@@ -56,11 +56,8 @@ public class TimerActivity extends Activity {
 			if(R.id.buttonArretT == v.getId())
 			{
 				pause();
-				Log.i("test", String.valueOf(SystemClock.elapsedRealtime()));
-				Log.i("test", String.valueOf(chronometre.getBase()));
-				Toast.makeText(TimerActivity.this, String.valueOf((SystemClock.elapsedRealtime() - chronometre.getBase())/1000), Toast.LENGTH_SHORT).show();
 				
-				//Dialog pour changer le nom
+				//Dialog pour la fin de l'entrainement
 				final FinTimerDialog dialog = new FinTimerDialog(TimerActivity.this);
 				dialog.setContentView(R.layout.activity_fin_timer_dialog);
 				dialog.setTitle("Fin de l'entrainement");

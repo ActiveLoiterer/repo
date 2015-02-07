@@ -1,36 +1,43 @@
 package vieux.foo.tap_cercle;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View.OnClickListener;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
 
-public class FinTimerDialog extends Dialog {
+public class DebutAppDialog extends Dialog {
+
+	Button buttonOk;
+	Operations op;
+	EditText age;
+	RadioButton homme;
 	
-	Button buttonOk, buttonAnnuler;
-	
-	public FinTimerDialog(Context context) {
+	public DebutAppDialog(Context context) {
 		super(context);
-		
-		
+		op = new Operations(context);
 	}
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_fin_timer_dialog);
+		setContentView(R.layout.activity_debut_app_dialog);
 		
-		buttonOk = (Button)findViewById(R.id.buttonOkDialog);
-		buttonAnnuler = (Button)findViewById(R.id.buttonAnnulerDialog);
+		buttonOk = (Button)findViewById(R.id.buttonOkDialogADAD);
+		age = (EditText)findViewById(R.id.editTextAgeDialog);
+		homme = (RadioButton)findViewById(R.id.radioButtonHommeDialog);
+		
 		
 		//Ecouteur
 		Ecouteur ec = new Ecouteur();
 		buttonOk.setOnClickListener(ec);
-		buttonAnnuler.setOnClickListener(ec);
 	}
 	
 	private class Ecouteur implements android.view.View.OnClickListener
@@ -38,16 +45,19 @@ public class FinTimerDialog extends Dialog {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			if(v.getId() == R.id.buttonOkDialog)
-			{
-				//SAVE DANS BD
-			}
+			op.ouvrirBD();
+			
+			if(homme.isChecked())
+				op.ajouterUser(Integer.valueOf(age.getText().toString()), 'M');
 			else
-				dismiss();
+				op.ajouterUser(Integer.valueOf(age.getText().toString()), 'F');
+			
+			op.fermerBD();
+			//SAVE DANS LA BD;
+			dismiss();
 		}
-		
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

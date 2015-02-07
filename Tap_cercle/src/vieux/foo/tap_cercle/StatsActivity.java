@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -18,15 +19,28 @@ public class StatsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stats);
 		freqs = new Vector<Integer>();
-		
+		Log.i("test", "PAS DE DONNÉES !1");
 		moyText = (TextView)findViewById(R.id.textMoy);
-		
+		Log.i("test", "PAS DE DONNÉES !2");
 		Operations o = new Operations(this);
+		Log.i("test", "PAS DE DONNÉES !3");
 		o.ouvrirBD();
-		freqs = o.getFreqs();
+		Log.i("test", "PAS DE DONNÉES !4");
+		try{
+			freqs = o.getFreqs();
+		}
+		catch(Exception e)
+		{
+			Log.i("test", "PAS DE DONNÉES !");
+		}
 		o.fermerBD();
-		
-		moyText.setText(String.valueOf(Stats.moyenne(freqs)));
+		Log.i("test", "PAS DE DONNÉES !5");
+		try{
+			moyText.setText(String.valueOf(Stats.moyenne(freqs)));
+		}catch(Exception e)
+		{
+			Log.i("test", "PAS DE DONNÉES !");
+		}
 	}
 
 	@Override

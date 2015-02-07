@@ -3,6 +3,7 @@ package vieux.foo.tap_cercle;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,21 @@ public class MainActivity extends Activity {
         buttonStats = (Button)findViewById(R.id.buttonStatsAM);
         buttonOptions = (Button)findViewById(R.id.buttonOptionsAM);
         
+        Operations op = new Operations(this);
+        op.ouvrirBD();
+        Log.i("test", String.valueOf(op.aUser()));
+        if(!op.aUser())
+        {
+			//Dialog pour la fin de l'entrainement
+			final DebutAppDialog dialog = new DebutAppDialog(MainActivity.this);
+			dialog.setContentView(R.layout.activity_debut_app_dialog);
+			dialog.setTitle("Informations...");
+
+			dialog.show();
+        }
+        	
+        op.fermerBD();	
+        
         //Ecouteur
         Ecouteur ec = new Ecouteur();
         buttonEntrainement.setOnClickListener(ec);
@@ -38,7 +54,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent i;
+			Intent i = null;
 			if(v.getId() == R.id.buttonStartAM)
 			{
 				//buttonEntrainement
@@ -49,21 +65,24 @@ public class MainActivity extends Activity {
 			{
 				//buttonTap
 				i = new Intent(MainActivity.this, TapActivity.class);
+				startActivity(i);	
 				i.putExtra("type", 0);
 				
 			}else if(v.getId() == R.id.buttonStatsAM)
 			{
 				//buttonStats
 				i = new Intent(MainActivity.this, StatsActivity.class);	
-				
-			}else
+			}else if(v.getId() == R.id.buttonOptionsAM){
+				i = new Intent(MainActivity.this, StatsActivity.class);	
+			}
+			else
 			{
 				//buttonOptions
 				i = new Intent(MainActivity.this, MainActivity.class);	
 				
 			}
 			startActivity(i);
-		}
+    	}
     	
     }
 

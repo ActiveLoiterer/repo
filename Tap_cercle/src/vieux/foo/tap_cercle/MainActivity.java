@@ -1,6 +1,7 @@
 package vieux.foo.tap_cercle;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +44,9 @@ public class MainActivity extends Activity {
 			}else if(v.getId() == R.id.buttonTapAM)
 			{
 				//buttonTap
+				Intent i;
+				i = new Intent(MainActivity.this, TapActivity.class);
+				startActivity(i);	
 			}else if(v.getId() == R.id.buttonStatsAM)
 			{
 				//buttonStats

@@ -4,5 +4,8 @@
     <string name="app_name">Tap_cercle</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_timer">TimerActivity</string>
+    <string name="title_activity_fin_timer_dialog">FinTimerDialog</string>
+    <string name="title_activity_tap">TapActivity</string>
 
 </resources>

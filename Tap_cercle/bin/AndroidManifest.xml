@@ -16,11 +16,23 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".TimerActivity"
+            android:label="@string/title_activity_timer" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".FinTimerDialog"
+            android:label="@string/title_activity_fin_timer_dialog" >
+        </activity>
+        <activity
+            android:name=".TapActivity"
+            android:label="@string/title_activity_tap" >
         </activity>
     </application>
 

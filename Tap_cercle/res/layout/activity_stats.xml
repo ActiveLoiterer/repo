@@ -6,35 +6,26 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="vieux.foo.tap_cercle.TapActivity" >
+    tools:context="vieux.foo.tap_cercle.StatsActivity" >
 
-    
     <TextView
         android:id="@+id/textMoy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Tapez" />
-    
+        android:layout_marginTop="32dp"
+        android:text="placeholder"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <TextView
-        android:id="@+id/textViewNb"
+        android:id="@+id/labelMoy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textMoy"        
-        android:layout_centerHorizontal="true"
-        android:text="0" />
-
-    
-
-    <ImageButton
-        android:id="@+id/imageButCoeur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewNb"
+        android:layout_alignLeft="@+id/textMoy"
+        android:layout_below="@+id/textMoy"
         android:layout_marginTop="29dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/cercle"
-        style="?android:attr/borderlessButtonStyle" />
+        android:text="Moyenne de vos fréquences"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

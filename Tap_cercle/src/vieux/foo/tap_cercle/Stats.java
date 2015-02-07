@@ -1,5 +1,7 @@
 package vieux.foo.tap_cercle;
 
+import java.util.Vector;
+
 public class Stats {
 	public static int temps = 15;
 
@@ -18,5 +20,17 @@ public class Stats {
 		
 	public static int pourcentage (int pulsations, int age, char sexe){
 		return (pulsations * temps * 100 )/ freqMax(age, sexe);
+	}
+	
+	public static int moyenne(Vector<Integer> freqs){
+		int moy = 0;
+		
+		for(int i:freqs){
+			moy += i;
+		}
+		
+		moy /= freqs.size();
+		
+		return moy;
 	}
 }

@@ -38,22 +38,31 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			Intent i;
 			if(v.getId() == R.id.buttonStartAM)
 			{
 				//buttonEntrainement
+				i = new Intent(MainActivity.this, TapActivity.class);
+				i.putExtra("type", 1);
+				
 			}else if(v.getId() == R.id.buttonTapAM)
 			{
 				//buttonTap
-				Intent i;
 				i = new Intent(MainActivity.this, TapActivity.class);
-				startActivity(i);	
+				i.putExtra("type", 0);
+				
 			}else if(v.getId() == R.id.buttonStatsAM)
 			{
 				//buttonStats
-			}else if(v.getId() == R.id.buttonOptionsAM)
+				i = new Intent(MainActivity.this, StatsActivity.class);	
+				
+			}else
 			{
 				//buttonOptions
+				i = new Intent(MainActivity.this, MainActivity.class);	
+				
 			}
+			startActivity(i);
 		}
     	
     }

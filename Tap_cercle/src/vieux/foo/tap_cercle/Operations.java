@@ -1,5 +1,6 @@
 package vieux.foo.tap_cercle;
 
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -28,13 +29,18 @@ public class Operations {
 		database.close();
 	}
 	
+	public void ajouterResultat(int freq1,int freq2,int freq3, int pourcentage2,int pourcentage3, Date date)
+	{
+		databaseHelper.ajouterResultat(new Resultat(freq1,freq2,freq3, pourcentage2, pourcentage3, date), database);
+	}
+	
 	public void ajouterUser(int age, char sexe)
 	{
 		databaseHelper.ajouterUser(new User(sexe, age), database);
 	}
 	
 	public int getMostRecentFreq(){
-		Cursor c = database.rawQuery("SELECT frequence, date FROM resultat ORDER BY date DESC", null);
+		Cursor c = database.rawQuery("SELECT frequence3 date FROM resultat ORDER BY _id DESC", null);
 		
 		c.moveToFirst();
 		int i = c.getInt(0);
@@ -42,27 +48,28 @@ public class Operations {
 		return i ;
 	}
 	// TODO modifier la requete pou f1,f2,f3
-	public Vector<Integer> getFreqs(){
-		Vector <Integer> freqs = new Vector<Integer>();
+	public Vector<Vector<Integer>> getFreqs(){
+		Vector <Vector<Integer>> v = new Vector<Vector<Integer>>();
+		Vector <Integer> freqs = null;
 		
-		Cursor c = database.rawQuery("SELECT frequence, date FROM resultat ORDER BY date ASC", null);
-		try{
+		Cursor c = database.rawQuery("SELECT frequence1, frequence2,frequence3 FROM resultat", null);
+
 			while(c.moveToNext())
 			{
-				freqs.add(c.getInt(0));
+				freqs = new Vector<Integer>();
+				for(int i = 0; i < 3; i++){					
+					freqs.add(c.getInt(i));
+				}
+				v.add(freqs);
 			}
-		}catch(Exception e)
-		{
-			Log.i("test", "lol");
-		}
 		
-		return freqs;
+		return v;
 	}
 	
 	public Vector<String> getDates(){
 		Vector <String> dates = new Vector<String>();
 		
-		Cursor c = database.rawQuery("SELECT date FROM resultat ORDER BY date ASC", null);
+		Cursor c = database.rawQuery("SELECT date FROM resultat", null);
 		
 		while(c.moveToNext())
 		{
@@ -121,6 +128,19 @@ public class Operations {
 		cv.put("pourcentage3", 0);
 		cv.put("date", "");
 		database.insert("resultat", null, cv);
+	}
+	
+	public Vector<Integer> getEntrainements(){
+		Vector <Integer> i = new Vector<Integer>();
+		
+		Cursor c = database.rawQuery("SELECT _id FROM resultat", null);
+		
+		while(c.moveToNext())
+		{
+			i.add(c.getInt(0));
+		}
+		
+		return i;
 	}
 }
 

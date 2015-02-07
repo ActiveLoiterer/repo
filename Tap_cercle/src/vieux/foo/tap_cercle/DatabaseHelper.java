@@ -45,6 +45,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		cv.put("pourcentage3", r.getPourcentage3());
 		cv.put("date", r.getDate().toString());
 		
-		db.insert("user", null, cv);
+		db.insert("resultat", null, cv);
 	}
 }

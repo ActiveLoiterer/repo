@@ -14,18 +14,46 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:text="placeholder"
+        android:layout_marginTop="86dp"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/labelMoy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textMoy"
-        android:layout_below="@+id/textMoy"
-        android:layout_marginTop="29dp"
-        android:text="Moyenne de vos fréquences"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:text="Moyenne de toutes vos fréquences:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/labelMoys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textMoy"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:text="Moyennes de fréquences par entrainements:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ListView
+        android:id="@+id/listeMoy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/labelMoys"
+        android:paddingTop="225dp" >
+
+    </ListView>
 
 </RelativeLayout>

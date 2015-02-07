@@ -2,6 +2,8 @@ package vieux.foo.tap_cercle;
 
 import java.util.Vector;
 
+import android.util.Log;
+
 public class Stats {
 	public static int temps = 15;
 
@@ -18,18 +20,38 @@ public class Stats {
 		}		
 	}
 	
-	public static int moyenne(Vector<Integer> freqs){
-		int moy = 0;
+	public static int moyenne(Vector<Vector<Integer>> v){
+		int moy1 = 0;
+		int moy2 = 0;
 		
-		for(int i:freqs){
-			moy += i;
+		for(Vector<Integer> freqs:v){
+			moy1 = 0;
+			
+			for(int i: freqs){
+				moy1 += i;
+			}
+			
+			moy1 /= freqs.size();
+			moy2 += moy1;
 		}
 		
-		moy /= freqs.size();
+		moy2 /= v.size();
+		
+		return moy2;
+	}
+	
+	public static int moyParEntr(Vector<Integer> v){
+		int moy = 0;
+		
+		for(Integer i:v){
+			moy+=i;
+		}
+		
+		moy /= v.size();
 		
 		return moy;
 	}
-		
+	
 	public static int pourcentage (int pulsations, int age, char sexe){
 		return (pulsations * temps * 100 )/ freqMax(age, sexe);
 	}

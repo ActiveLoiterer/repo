@@ -1,5 +1,6 @@
 package vieux.foo.tap_cercle;
 
+import java.util.Date;
 import java.util.Vector;
 
 import android.app.Activity;
@@ -7,40 +8,71 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class StatsActivity extends Activity {
 	
 	TextView moyText;
-	Vector <Integer>freqs;
+	Vector <Vector<Integer>>freqs;
+	ListView listMoyEntraine;
+	String [] entrainements;
+	Vector<Integer> idEntraine;
+	Vector<Integer> moyennes;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stats);
-		freqs = new Vector<Integer>();
-		Log.i("test", "PAS DE DONNÉES !1");
+		
+		freqs = new Vector<Vector<Integer>>();
+		
+		idEntraine = new Vector<Integer>();
+		
+		moyennes = new Vector<Integer>();
+
 		moyText = (TextView)findViewById(R.id.textMoy);
-		Log.i("test", "PAS DE DONNÉES !2");
-		Operations o = new Operations(this);
-		Log.i("test", "PAS DE DONNÉES !3");
+		
+		listMoyEntraine =(ListView)findViewById(R.id.listeMoy);
+
+		Operations o = new Operations(this);				
+
 		o.ouvrirBD();
-		Log.i("test", "PAS DE DONNÉES !4");
+		
+		/*o.ajouterUser(21, 'M');
+		
+		o.ajouterResultat(250,150,200,50,50, new Date());
+		
+		o.ajouterResultat(350,250,300,50,50, new Date());*/
+		
 		try{
-			freqs = o.getFreqs();
+			freqs = o.getFreqs();		
+			
+			for(Vector<Integer> v: freqs){
+				Log.i("INFO", v + "");
+				moyennes.add(Stats.moyParEntr(v));
+			}
+			
+			idEntraine = o.getEntrainements();	
 		}
 		catch(Exception e)
 		{
-			Log.i("test", "PAS DE DONNÉES !");
-		}
+			Log.i("INFO", "PAS DE DONNÉES !1");
+		}				
+		
 		o.fermerBD();
-		Log.i("test", "PAS DE DONNÉES !5");
+		
 		try{
 			moyText.setText(String.valueOf(Stats.moyenne(freqs)));
 		}catch(Exception e)
 		{
-			Log.i("test", "PAS DE DONNÉES !");
+			Log.i("INFO", "PAS DE DONNÉES !2");
 		}
+		
+		fillStringTable();
+		ArrayAdapter a = new ArrayAdapter(this, android.R.layout.simple_list_item_1, entrainements);
+        listMoyEntraine.setAdapter(a);
 	}
 
 	@Override
@@ -60,5 +92,15 @@ public class StatsActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void fillStringTable(){
+		entrainements = new String [idEntraine.size()];
+		
+		for(int i = 0; i < entrainements.length; i++){
+			String strIdEntr = idEntraine.get(i).toString(), strMoy = moyennes.get(i).toString();
+
+			entrainements[i] = "Entrainement #" + strIdEntr + ": " + strMoy;
+		}
 	}
 }

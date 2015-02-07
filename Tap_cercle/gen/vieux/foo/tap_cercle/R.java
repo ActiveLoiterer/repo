@@ -26,29 +26,33 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080016;
+        public static final int action_settings=0x7f08001a;
         public static final int boutonBack=0x7f08000b;
         public static final int buttonAnnulerDialog=0x7f080005;
-        public static final int buttonArretT=0x7f080015;
+        public static final int buttonArretT=0x7f080019;
         public static final int buttonOkDialog=0x7f080004;
         public static final int buttonOkDialogADAD=0x7f080003;
         public static final int buttonOptionsAM=0x7f080009;
-        public static final int buttonResetT=0x7f080014;
+        public static final int buttonResetT=0x7f080018;
+        public static final int buttonRetourAT=0x7f080015;
         public static final int buttonStartAM=0x7f080006;
         public static final int buttonStatsAM=0x7f080008;
         public static final int buttonTapAM=0x7f080007;
-        public static final int chronometerT=0x7f080012;
+        public static final int chronometerT=0x7f080016;
         public static final int editTextAgeDialog=0x7f080000;
-        public static final int imageButCoeur=0x7f080011;
+        public static final int imageButCoeur=0x7f080014;
         public static final int labelMoy=0x7f08000e;
+        public static final int labelMoys=0x7f080010;
+        public static final int listeMoy=0x7f080011;
         public static final int pourcentText=0x7f08000a;
         public static final int radioButtonFemmeDialog=0x7f080002;
         public static final int radioButtonHommeDialog=0x7f080001;
         public static final int resultText=0x7f08000c;
+        public static final int scrollView1=0x7f08000f;
         public static final int textMoy=0x7f08000d;
-        public static final int textViewMoy=0x7f08000f;
-        public static final int textViewNb=0x7f080010;
-        public static final int toggleButtonStopPlayT=0x7f080013;
+        public static final int textViewMoy=0x7f080012;
+        public static final int textViewNb=0x7f080013;
+        public static final int toggleButtonStopPlayT=0x7f080017;
     }
     public static final class layout {
         public static final int activity_debut_app_dialog=0x7f030000;
@@ -69,15 +73,15 @@ public final class R {
         public static final int timer=0x7f070006;
     }
     public static final class string {
-        public static final int action_settings=0x7f050002;
+        public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050001;
+        public static final int tapez_act_tap=0x7f050006;
         public static final int title_activity_debut_app_dialog=0x7f050007;
-        public static final int title_activity_fin_timer_dialog=0x7f050004;
-        public static final int title_activity_result=0x7f050006;
+        public static final int title_activity_fin_timer_dialog=0x7f050003;
+        public static final int title_activity_result=0x7f050005;
         public static final int title_activity_stats=0x7f050008;
-        public static final int title_activity_tap=0x7f050005;
-        public static final int title_activity_timer=0x7f050003;
+        public static final int title_activity_tap=0x7f050004;
+        public static final int title_activity_timer=0x7f050002;
     }
     public static final class style {
         /** 

@@ -33,15 +33,8 @@ public class ResultActivity extends Activity {
 		//get user time from DB, not intent. Call methods from operations...
 		//getUserPulse(), getUserAge()
 		
-		int pulse = 0, age = 0;
-		char sexe = ' ';
-		
-		Operations o = new Operations(this);
-		o.ouvrirBD();
-		pulse = o.getMostRecentFreq();
-		age = o.getAge();
-		sexe = o.getSexe();
-		o.fermerBD();
+		int pulse = 9, age = 20;
+		char sexe = 'M';
 		
 		int pourcent = Stats.pourcentage(pulse, age, sexe);
 		

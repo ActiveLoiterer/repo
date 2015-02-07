@@ -92,6 +92,10 @@ public class TapActivity extends Activity {
 						op.saveFr2(nb * muliplicateur);
 						op.fermerBD();
 					}
+					
+					Intent i = new Intent(TapActivity.this, ResultActivity.class);
+					startActivity(i);
+					finish();
 				}
 			}
 		}		
@@ -107,21 +111,14 @@ public class TapActivity extends Activity {
 				imgBouton.setEnabled(false);
 				lecture = false;
 				nbCoups.setText((nb * muliplicateur) + " coups par minute");
-				Log.i("test","lol11");
 				if(utilisation.equals("Terminer"))
 				{
 					long varTemps = SystemClock.elapsedRealtime();
 					long tempsaRest = 60000;
 					Log.i("test","lol21");
 					
-					while(60000000 - (SystemClock.elapsedRealtime() - varTemps)> 0)
-					{
-						textMessage.setText("Attendez svp ");
-					}
-					Intent i = new Intent(TapActivity.this, ResultActivity.class);
-					startActivity(i);
-					finish();
-					utilisation = "";
+					retour.setEnabled(true);
+					
 					//while(tempsaRest - (SystemClock.elapsedRealtime() - varTemps) > 0)
 					/*while(true)
 					{

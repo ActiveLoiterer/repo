@@ -34,26 +34,33 @@ public class MainActivity extends Activity {
     
     private class Ecouteur implements OnClickListener
     {
-
+    	Intent i;
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			if(v.getId() == R.id.buttonStartAM)
 			{
 				//buttonEntrainement
+				i = new Intent(MainActivity.this, TimerActivity.class);
+				
 			}else if(v.getId() == R.id.buttonTapAM)
 			{
 				//buttonTap
-				Intent i;
+				
 				i = new Intent(MainActivity.this, TapActivity.class);
-				startActivity(i);	
+					
 			}else if(v.getId() == R.id.buttonStatsAM)
 			{
 				//buttonStats
-			}else if(v.getId() == R.id.buttonOptionsAM)
+				i = new Intent(MainActivity.this, MainActivity.class);
+				
+			}else
 			{
 				//buttonOptions
+				i = new Intent(MainActivity.this, MainActivity.class);
 			}
+			
+			startActivity(i);
 		}
     	
     }

@@ -16,6 +16,7 @@ public class FinTimerDialog extends Dialog {
 	public FinTimerDialog(Context context) {
 		super(context);
 		
+		
 	}
 
 	@Override

@@ -3,30 +3,54 @@ package vieux.foo.tap_cercle;
 import java.util.Date;
 
 public class Resultat {
-	int frequence, pourcentage;
+	int frequence1,frequence2,frequence3, pourcentage2,pourcentage3;
 	Date date;
 	
-	public Resultat(int frequence, int pourcentage, Date date)
+	public Resultat(int frequence1,int frequence2,int frequence3, int pourcentage2,int pourcentage3, Date date)
 	{
-		this.frequence = frequence;
-		this.pourcentage = pourcentage;
+		this.frequence1 = frequence1;
+		this.frequence2 = frequence2;
+		this.frequence3 = frequence3;
+		this.pourcentage2 = pourcentage2;
+		this.pourcentage3 = pourcentage3;
 		this.date = date;
 	}
 
-	public int getFrequence() {
-		return frequence;
+	public int getFrequence1() {
+		return frequence1;
 	}
 
-	public void setFrequence(int frequence) {
-		this.frequence = frequence;
+	public void setFrequence1(int frequence1) {
+		this.frequence1 = frequence1;
+	}
+	public int getFrequence2() {
+		return frequence2;
 	}
 
-	public int getPourcentage() {
-		return pourcentage;
+	public void setFrequence2(int frequence2) {
+		this.frequence2 = frequence2;
+	}
+	public int getFrequence3() {
+		return frequence3;
 	}
 
-	public void setPourcentage(int pourcentage) {
-		this.pourcentage = pourcentage;
+	public void setFrequence3(int frequence3) {
+		this.frequence3 = frequence3;
+	}
+
+	public int getPourcentage2() {
+		return pourcentage2;
+	}
+
+	public void setPourcentage2(int pourcentage2) {
+		this.pourcentage2 = pourcentage2;
+	}
+	public int getPourcentage3() {
+		return pourcentage3;
+	}
+
+	public void setPourcentage3(int pourcentage3) {
+		this.pourcentage3 = pourcentage3;
 	}
 
 	public Date getDate() {
@@ -38,4 +62,3 @@ public class Resultat {
 	}
 	
 }
-

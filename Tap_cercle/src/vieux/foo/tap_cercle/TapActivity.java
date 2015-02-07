@@ -15,12 +15,13 @@ import android.widget.Toast;
 public class TapActivity extends Activity {
 	TextView nbCoups;
 	ImageButton imgBouton;
+	Button retour;
 	int nb = 0;
 	boolean lecture = false;
 	long tempsDebut = 0;
-	long tempsNorm = 10;
+	int tempsNorm = 10;
 	long tempsReel = 0;
-	long muliplicateur = 60/tempsNorm;
+	int muliplicateur = 60/tempsNorm;
 	String utilisation; // à partir de òu accès
 	Operations op;
 	

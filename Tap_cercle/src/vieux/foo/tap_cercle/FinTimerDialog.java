@@ -3,6 +3,7 @@ package vieux.foo.tap_cercle;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Menu;
@@ -12,11 +13,11 @@ import android.widget.Button;
 public class FinTimerDialog extends Dialog {
 	
 	Button buttonOk, buttonAnnuler;
+	TimerActivity t;
 	
-	public FinTimerDialog(Context context) {
+	public FinTimerDialog(Context context, TimerActivity t) {
 		super(context);
-		
-		
+		this.t = t;	
 	}
 
 	@Override
@@ -26,6 +27,7 @@ public class FinTimerDialog extends Dialog {
 		
 		buttonOk = (Button)findViewById(R.id.buttonOkDialog);
 		buttonAnnuler = (Button)findViewById(R.id.buttonAnnulerDialog);
+		
 		
 		//Ecouteur
 		Ecouteur ec = new Ecouteur();
@@ -40,10 +42,10 @@ public class FinTimerDialog extends Dialog {
 			// TODO Auto-generated method stub
 			if(v.getId() == R.id.buttonOkDialog)
 			{
-				//SAVE DANS BD
+				Log.i("test", "lol_1");			
 			}
-			else
-				dismiss();
+			dismiss();
+			t.apresDialogue();
 		}
 		
 	}

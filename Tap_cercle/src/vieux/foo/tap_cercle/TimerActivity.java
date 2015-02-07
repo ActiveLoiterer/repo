@@ -1,6 +1,7 @@
 package vieux.foo.tap_cercle;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -20,10 +21,12 @@ public class TimerActivity extends Activity {
 	Chronometer chronometre;
 	Button buttonResetT, buttonArretT;
 	ToggleButton toggleButtonStopPlay;
+	Operations op;
 	
 	//Pour le chronomètre
 	long pauseTime = -1; //pas encore de pause
 	boolean reset = true;
+	boolean okDialogue = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,8 @@ public class TimerActivity extends Activity {
 		buttonResetT = (Button)findViewById(R.id.buttonResetT);
 		buttonArretT = (Button)findViewById(R.id.buttonArretT);
 		toggleButtonStopPlay = (ToggleButton)findViewById(R.id.toggleButtonStopPlayT);
-		
+
+		op = new Operations(this);
 		//Ecouteur
 		Ecouteur ec = new Ecouteur();
 		toggleButtonStopPlay.setOnCheckedChangeListener(ec);
@@ -45,6 +49,25 @@ public class TimerActivity extends Activity {
 		
 		chronometre.setBase(SystemClock.elapsedRealtime());
 		chronometre.start();
+	}
+
+	public void apresDialogue()
+	{
+		Log.i("test", "lol1");
+		//SAVE
+		op.ouvrirBD();
+		Long tempssec = (SystemClock.elapsedRealtime() - chronometre.getBase())/1000;
+		Log.i("test", "lol2");
+		op.saveTemps(tempssec.intValue());
+		op.fermerBD();
+		Log.i("test", "lol3");
+		//Intent
+		Intent i = new Intent(TimerActivity.this, TapActivity.class);
+		i.putExtra("source", "Terminer");
+		Log.i("test", "lol4");
+		finish();
+		Log.i("test", "lol5");
+		startActivity(i);
 	}
 	
 	private class Ecouteur implements OnCheckedChangeListener, OnClickListener
@@ -58,11 +81,14 @@ public class TimerActivity extends Activity {
 				pause();
 				
 				//Dialog pour la fin de l'entrainement
-				final FinTimerDialog dialog = new FinTimerDialog(TimerActivity.this);
+				final FinTimerDialog dialog = new FinTimerDialog(TimerActivity.this, TimerActivity.this);
 				dialog.setContentView(R.layout.activity_fin_timer_dialog);
 				dialog.setTitle("Fin de l'entrainement");
 
 				dialog.show();
+				Log.i("test", "lol0");
+				
+				
 			
 			}
 			else if(R.id.buttonResetT == v.getId()) //reset chronomètre
@@ -72,6 +98,7 @@ public class TimerActivity extends Activity {
 				toggleButtonStopPlay.setChecked(false);
 			}
 		}
+		
 
 		@Override
 		public void onCheckedChanged(CompoundButton buttonView,

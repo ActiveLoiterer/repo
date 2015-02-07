@@ -29,9 +29,9 @@ public class Operations {
 		database.close();
 	}
 	
-	public void ajouterResultat(int freq1,int freq2,int freq3, int pourcentage2,int pourcentage3, Date date)
+	public void ajouterResultat(int freq1,int freq2,int freq3, int pourcentage2,int pourcentage3,int tempssec, Date date)
 	{
-		databaseHelper.ajouterResultat(new Resultat(freq1,freq2,freq3, pourcentage2, pourcentage3, date), database);
+		databaseHelper.ajouterResultat(new Resultat(freq1,freq2,freq3, pourcentage2, pourcentage3, tempssec, date), database);
 	}
 	
 	public void ajouterUser(int age, char sexe)
@@ -128,6 +128,31 @@ public class Operations {
 		cv.put("pourcentage3", 0);
 		cv.put("date", "");
 		database.insert("resultat", null, cv);
+	}
+	public void saveFr2(int fr2){
+		ContentValues cv = new ContentValues();
+		cv.put("frequence2", fr2);
+		Cursor c = database.rawQuery("SELECT MAX(_id) FROM resultat",null);
+		c.moveToFirst();
+		int index = c.getInt(0);
+		Log.i("last_id", ""+index);
+		database.update("resultat", cv, "_id = ?",new String[]{String.valueOf(index)});		
+	}
+	public void saveFr3(int fr3){
+		ContentValues cv = new ContentValues();
+		cv.put("frequence3", fr3);
+		Cursor c = database.rawQuery("SELECT MAX(_id) FROM resultat",null);
+		c.moveToFirst();
+		int index = c.getInt(0);
+		database.update("resultat", cv, "_id = ?",new String[]{String.valueOf(index)});
+	}
+	public void saveTemps(int tempssec){
+		ContentValues cv = new ContentValues();
+		cv.put("tempssec", tempssec);
+		Cursor c = database.rawQuery("SELECT MAX(_id) FROM resultat",null);
+		c.moveToFirst();
+		int index = c.getInt(0);
+		database.update("resultat", cv, "_id = ?",new String[]{String.valueOf(index)});
 	}
 	
 	public Vector<Integer> getEntrainements(){

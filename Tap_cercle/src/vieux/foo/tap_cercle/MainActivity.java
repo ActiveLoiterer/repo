@@ -59,15 +59,15 @@ public class MainActivity extends Activity {
 			{
 				//buttonEntrainement
 				i = new Intent(MainActivity.this, TapActivity.class);
-                i.putExtra("source", "Menu principal"); 
-				i.putExtra("type", 1);
+                i.putExtra("source", "Suivant"); 
+				//i.putExtra("type", 1);
 				
 			}else if(v.getId() == R.id.buttonTapAM)
 			{
 				//buttonTap
 				i = new Intent(MainActivity.this, TapActivity.class);
 				i.putExtra("source", "Menu principal");	
-				i.putExtra("type", 0);
+				//i.putExtra("type", 0);
 				
 			}else if(v.getId() == R.id.buttonStatsAM)
 			{

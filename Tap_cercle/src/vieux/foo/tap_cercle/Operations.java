@@ -41,7 +41,7 @@ public class Operations {
 		
 		return i ;
 	}
-	
+	// TODO modifier la requete pou f1,f2,f3
 	public Vector<Integer> getFreqs(){
 		Vector <Integer> freqs = new Vector<Integer>();
 		
@@ -111,6 +111,16 @@ public class Operations {
 		else
 			return false;
 		
+	}
+	public void saveFr1(int fr1){
+		ContentValues cv = new ContentValues();
+		cv.put("frequence1", fr1);
+		cv.put("frequence2", 0);
+		cv.put("frequence3", 0);
+		cv.put("pourcentage2", 0);
+		cv.put("pourcentage3", 0);
+		cv.put("date", "");
+		database.insert("resultat", null, cv);
 	}
 }
 

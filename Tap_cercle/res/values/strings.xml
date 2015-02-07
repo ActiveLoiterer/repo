@@ -2,12 +2,12 @@
 <resources>
 
     <string name="app_name">Tap_cercle</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_timer">TimerActivity</string>
     <string name="title_activity_fin_timer_dialog">FinTimerDialog</string>
     <string name="title_activity_tap">TapActivity</string>
     <string name="title_activity_result">ResultActivity</string>
+    <string name="tapez_act_tap">Tapez à chaque battement de coeur</string>
     <string name="title_activity_debut_app_dialog">DebutAppDialog</string>
     <string name="title_activity_stats">StatsActivity</string>
 
